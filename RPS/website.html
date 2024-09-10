@@ -23,7 +23,7 @@
     }
   </style>
   <script>
-    const score = {
+    let score = JSON.parse(localStorage.getItem('score')) || {
         "Win": 0,
         "Lose": 0,
         "Tie": 0,
@@ -32,6 +32,7 @@
         score.Win = 0;
         score.Lose = 0;
         score.Tie = 0;
+        localStorage.removeItem("score")
       };
       
     function RPS(choice) {
@@ -59,6 +60,7 @@
         score.Win+=1;
         alert(`Computer choice: ${choices[computerChoice]} | User Choice: ${choices[choice]} | Result: Win \n Wins : ${score.Win} Ties : ${score.Tie} Loses : ${score.Lose}`);
       }
+      localStorage.setItem('score' , JSON.stringify(score));
       
     }
   </script>
