@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Rock Paper Scissors!</title>
+  <style>
+    .rockButton {
+      background-color: dimgray;
+      border: none;
+      color: whitesmoke;
+    }
+
+    .paperButton {
+      background-color: yellow;
+      border: none;
+      color: black;
+    }
+
+    .scissorButton {
+      background-color: red;
+      border: none;
+      color: black;
+    }
+  </style>
+  <script>
+    const score = {
+        "Win": 0,
+        "Lose": 0,
+        "Tie": 0,
+      };
+      function reset(){
+        score.Win = 0;
+        score.Lose = 0;
+        score.Tie = 0;
+      };
+      
+    function RPS(choice) {
+      let computerChoice = Math.floor((Math.random() * 3) + 1);
+      const choices = {
+        1: "Rock",
+        2: "Paper",
+        3: "Scissors"
+      };
+      
+
+      let result = "";
+
+      if (choice === computerChoice) {
+        score.Tie+=1;
+        alert(`Computer choice: ${choices[computerChoice]} | User Choice: ${choices[choice]} | Result: Tie \n Wins : ${score.Win} Ties : ${score.Tie} Loses : ${score.Lose}`);
+      }
+      else if ((choice === 1 && computerChoice === 2) ||
+        (choice === 2 && computerChoice === 3) ||
+        (choice === 3 && computerChoice === 1)) {
+          score.Lose+=1;
+          alert(`Computer choice: ${choices[computerChoice]} | User Choice: ${choices[choice]} | Result: Lose \n Wins : ${score.Win} Ties : ${score.Tie} Loses : ${score.Lose}`);
+      }
+      else {
+        score.Win+=1;
+        alert(`Computer choice: ${choices[computerChoice]} | User Choice: ${choices[choice]} | Result: Win \n Wins : ${score.Win} Ties : ${score.Tie} Loses : ${score.Lose}`);
+      }
+      
+    }
+  </script>
+</head>
+
+<body>
+  <p>
+    This is a Rock Paper Scissors game!</br>
+    <button class="rockButton" onclick="RPS(1)">Rock</button>
+    &nbsp;
+    <button class="paperButton" onclick="RPS(2)">Paper</button>
+    &nbsp;
+    <button class="scissorButton" onclick="RPS(3)">Scissors</button>
+    &nbsp;
+    <button onclick="reset()">Reset</button>
+  </p>
+</body>
+
+</html>
